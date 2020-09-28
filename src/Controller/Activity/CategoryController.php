@@ -37,9 +37,31 @@ class CategoryController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($category);
             $manager->flush();
+
+            return $this->redirectToRoute("category.index");
         }
         return $this->render('activity/category/index.html.twig', [
             'categories'    =>  $repository->findAll(),
+            'category'      =>  $category,
+            'form'          =>  $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="category.edit", method={"GET","POST"})
+     */
+    public function edit(Request $request, Category $category)
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute("category.index");
+        }
+
+        return $this->render('activity/category/edit.html.twig', [
             'category'      =>  $category,
             'form'          =>  $form->createView(),
         ]);
