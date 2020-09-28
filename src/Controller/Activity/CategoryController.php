@@ -48,7 +48,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category.edit", method={"GET","POST"})
+     * @Route("/{id}", name="category.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category)
     {
