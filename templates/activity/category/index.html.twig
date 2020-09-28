@@ -50,7 +50,7 @@
                     <th scope="row">{{category.id}}</th>
                     <td>{{category.label}}</td>
                     <td>
-                        <a href="{{path("category.edit")}}" class="btn btn-primary">Edit</a>
+                        <a href="{{path("category.edit", {id: category.id})}}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
             {% endfor %}
