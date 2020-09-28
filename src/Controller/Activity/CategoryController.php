@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/dashboard/category/")
+ * @Route("/dashboard/category")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("", name="category.index")
+     * @Route("/index", name="category.other")
      */
     public function index(CategoryRepository $repository)
     {
@@ -25,7 +25,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("new", name="category.index")
+     * @Route("/", name="category.index")
      */
     public function new(Request $request, CategoryRepository $repository)
     {
@@ -39,7 +39,7 @@ class CategoryController extends AbstractController
             $manager->flush();
         }
         return $this->render('activity/category/index.html.twig', [
-            //'categories'    =>  $repository->findAll(),
+            'categories'    =>  $repository->findAll(),
             'category'      =>  $category,
             'form'          =>  $form->createView(),
         ]);

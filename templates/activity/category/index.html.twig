@@ -3,5 +3,34 @@
 {% block title %}Gestion de Catégories{% endblock %}
 
 {% block body %}
-    <h1>HELLO</h1>
+    <div class="alert alert-primary mb-4">
+        <h3>Liste de toutes les catégories</h3>
+    </div>
+
+    <div class="col-md-10 mx-auto">
+        <div class="text-right">
+            <a href="" class="btn btn-primary"> + Nouvelle Catégorie</a>
+        </div>
+
+        <table class="table">
+            <thead class="thead-primary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Label</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <th scope="row">{{category.id}}</th>
+                    <td>{{category.label}}</td>
+                    <td>
+                        <a href="" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
