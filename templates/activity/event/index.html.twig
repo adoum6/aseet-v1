@@ -1,0 +1,31 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Activités | Accueil{% endblock %}
+
+{% block body %}
+    <div class="alert alert-primary text-center mt-3">
+        <h3>Liste des activités</h3>
+    </div>
+    <div class="col-md-10 mx-auto">
+        <table class="table">
+            <thead class="thead-primary">
+                <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ event.title}}</td>
+                    <td>{{ event.category}}</td>
+                    <td>{{ event.category}}</td>
+                    <td>
+                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
