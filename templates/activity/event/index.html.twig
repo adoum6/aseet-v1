@@ -17,6 +17,7 @@
                 </tr>
             </thead>
             <tbody>
+            {% for event in events %}
                 <tr>
                     <td>{{ event.title}}</td>
                     <td>{{ event.category}}</td>
@@ -25,6 +26,7 @@
                         <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-primary">Edit</a>
                     </td>
                 </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
