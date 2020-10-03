@@ -23,7 +23,7 @@ class EventType extends AbstractType
                 'choice_label'  =>  'label',
                 'label' =>  'Catégorie'
             ])
-            ->add('description', TextType::class, ['label' => 'Contenu'])
+            // ->add('description', TextType::class, ['label' => 'Contenu'])
             ->add('eventDate')
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
