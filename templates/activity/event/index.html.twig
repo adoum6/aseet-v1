@@ -16,7 +16,7 @@
                     <th scope="col">Titre</th>
                     <th scope="col">Catégorie</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +26,8 @@
                     <td>{{ event.category.label}}</td>
                     <td>{{ event.eventDate | date("d/m/Y H:i:s")}}</td>
                     <td class="text-center">
-                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-primary">Edit</a>
+                        <a href="{{path("event.show", {id: event.id})}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-warning"><i class="fas fa-edit"></a>
                     </td>
                 </tr>
             {% endfor %}

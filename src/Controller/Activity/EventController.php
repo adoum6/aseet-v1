@@ -65,4 +65,24 @@ class EventController extends AbstractController
            'form'   =>  $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("dashboard/event/{id}/show", name="event.edit", methods="GET")
+     */
+    public function show(Event $event)
+    {
+        return $this->render('activity/event/show.html.twig', [
+            'event'  =>  $event,
+        ]);
+    }
+
+    /**
+     * @Route("/asset/activities", name="events.list", methods="GET")
+     */
+    public function getAllActivities(EventRepository $repository)
+    {
+        return $this->render('lien/vers/file.twig', [
+            'events'  =>  $repository->findByEventDateDesc(),
+        ]);
+    }
 }
