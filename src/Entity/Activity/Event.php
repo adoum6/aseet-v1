@@ -6,6 +6,7 @@ use App\Repository\Activity\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -22,6 +23,7 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min="4", minMessage="Titre trop court", max="254", maxMessage="Le titre ne doit pas dépasser 250 caractéres")
      */
     private $title;
 
@@ -54,7 +56,7 @@ class Event
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -62,6 +64,11 @@ class Event
      * @ORM\Column(type="datetime")
      */
     private $eventDate;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {

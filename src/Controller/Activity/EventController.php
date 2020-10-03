@@ -23,7 +23,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("dashboard/event/new", name="event.new")
+     * @Route("dashboard/event/new", name="event.new", methods={"GET", "POST"})
      */
     public function new(Request $request)
     {
@@ -42,6 +42,27 @@ class EventController extends AbstractController
         return $this->render('activity/event/new.html.twig', [
             'event' =>  $event,
             'form'  =>  $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("dashboard/event/{id}/edit", name="event.edit", methods="GET|POST")
+     */
+    public function edit(Request $request, Event $event)
+    {
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $event->setUpdatedAt(new \DateTime());
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('event.index');
+        }
+
+        return $this->render('activity/event/edit.html.twig', [
+           'event'  =>  $event,
+           'form'   =>  $form->createView(),
         ]);
     }
 }
