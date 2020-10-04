@@ -2,17 +2,17 @@
 
 namespace App\Entity\Activity;
 
-use App\Repository\Activity\EventRepository;
+use App\Repository\Activity\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=EventRepository::class)
+ * @ORM\Entity(repositoryClass=MediaRepository::class)
  * @Vich\Uploadable
  */
-class Event
+class Media
 {
     /**
      * @ORM\Id
@@ -22,30 +22,19 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="4", minMessage="Titre trop court", max="254", maxMessage="Le titre ne doit pas dépasser 250 caractéres")
-     */
-    private $title;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
-     * @Vich\UploadableField(mapping="activities", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="medias", fileNameProperty="mediaName")
      * @var File|null
      */
-    private $imageFile;
+    private $mediaFile;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      * @var string|null
      */
-    private $imageName;
+    private $mediaName;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="events")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="medias")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -63,10 +52,11 @@ class Event
     /**
      * @ORM\Column(type="datetime")
      */
-    private $eventDate;
+    private $date;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
      */
     private $year;
 
@@ -80,43 +70,19 @@ class Event
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getMediaFile(): ?File
     {
-        return $this->title;
+        return $this->mediaFile;
     }
 
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-    
     /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $mediaFile
      */
-    public function setImageFile(?File $imageFile = null): void
+    public function setMediaFile(?File $mediaFile = null): void
     {
-        $this->imageFile = $imageFile;
+        $this->mediaFile = $mediaFile;
 
-        if (null !== $imageFile) {
+        if (null !== $mediaFile) {
             $this->updatedAt = new \DateTime();
         }
     }
@@ -129,6 +95,18 @@ class Event
     public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function getMediaName(): ?string
+    {
+        return $this->mediaName;
+    }
+
+    public function setMediaName(string $mediaName): self
+    {
+        $this->mediaName = $mediaName;
 
         return $this;
     }
@@ -169,14 +147,14 @@ class Event
         return $this;
     }
 
-    public function getEventDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->eventDate;
+        return $this->date;
     }
 
-    public function setEventDate(\DateTimeInterface $eventDate): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->eventDate = $eventDate;
+        $this->date = $date;
 
         return $this;
     }
