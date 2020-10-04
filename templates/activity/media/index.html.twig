@@ -1,0 +1,44 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Media | index{% endblock %}
+
+{% block body %}
+
+    <div class="alert alert-primary p-1">
+        <h3 class="text-center">Liste de medias</h3>
+    </div>
+
+    <div class="col-md-10 mx-auto">
+        <div class="text-right mt-4 my-2">
+            <a href="{{ path('media.new') }}" class="btn btn-primary"><i class="fas fa-edit"> Ajouter</i></a>
+        </div>
+        <table class="table">
+            <thead class="thead-primary">
+                <tr>
+                    <th>Id</th>
+                    <th>Catégorie</th>
+                    <th>Date</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for medium in medias %}
+                <tr>
+                    <td>{{ medium.id }}</td>
+                    <td>{{ medium.category.label }}</td>
+                    <td>{{ medium.date ? medium.date|date('d-m-Y à  H:i:s') : '' }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('media.show', {'id': medium.id}) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('media.edit', {'id': medium.id}) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

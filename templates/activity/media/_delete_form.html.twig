@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('media.delete', {'id': media.id}) }}" onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce contenu?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ media.id) }}">
+    <button class="btn btn-danger"><i class="fas fa-backspace"></i></button>
+</form>

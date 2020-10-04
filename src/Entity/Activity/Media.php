@@ -87,18 +87,6 @@ class Media
         }
     }
 
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
-
-    public function setImageName(?string $imageName): self
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
     public function getMediaName(): ?string
     {
         return $this->mediaName;

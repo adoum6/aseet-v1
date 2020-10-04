@@ -1,0 +1,14 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Gestion médias{% endblock %}
+
+{% block body %}
+    <div class="alert alert-warning mt-4">
+        <h3>Mise à jour de Médias</h3>
+    </div>
+    {{ include('activity/media/_form.html.twig', {'button_label': 'Editer'}) }}
+
+    <a href="{{ path('media.index') }}" class="text-right">Retour</a>
+
+    {{ include('activity/media/_delete_form.html.twig') }}
+{% endblock %}
