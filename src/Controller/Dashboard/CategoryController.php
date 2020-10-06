@@ -19,7 +19,7 @@ class CategoryController extends AbstractController
      */
     public function index(CategoryRepository $repository)
     {
-        return $this->render('activity/category/index.html.twig', [
+        return $this->render('dashboard/category/index.html.twig', [
             'categories' => $repository->findAll(),
         ]);
     }
@@ -40,7 +40,7 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute("category.index");
         }
-        return $this->render('activity/category/index.html.twig', [
+        return $this->render('dashboard/category/index.html.twig', [
             'categories'    =>  $repository->findAll(),
             'category'      =>  $category,
             'form'          =>  $form->createView(),
@@ -61,7 +61,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute("category.index");
         }
 
-        return $this->render('activity/category/edit.html.twig', [
+        return $this->render('dashboard/category/edit.html.twig', [
             'category'      =>  $category,
             'form'          =>  $form->createView(),
         ]);

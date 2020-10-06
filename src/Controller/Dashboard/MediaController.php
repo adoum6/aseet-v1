@@ -20,7 +20,7 @@ class MediaController extends AbstractController
      */
     public function index(MediaRepository $mediaRepository): Response
     {
-        return $this->render('activity/media/index.html.twig', [
+        return $this->render('dashboard/media/index.html.twig', [
             'medias' => $mediaRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class MediaController extends AbstractController
             return $this->redirectToRoute('media.index');
         }
 
-        return $this->render('activity/media/new.html.twig', [
+        return $this->render('dashboard/media/new.html.twig', [
             'media' => $media,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class MediaController extends AbstractController
      */
     public function show(Media $media): Response
     {
-        return $this->render('activity/media/show.html.twig', [
+        return $this->render('dashboard/media/show.html.twig', [
             'media' => $media,
         ]);
     }
@@ -73,7 +73,7 @@ class MediaController extends AbstractController
             return $this->redirectToRoute('media.index');
         }
 
-        return $this->render('activity/media/edit.html.twig', [
+        return $this->render('dashboard/media/edit.html.twig', [
             'media' => $media,
             'form' => $form->createView(),
         ]);
