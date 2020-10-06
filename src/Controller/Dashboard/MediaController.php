@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Activity;
+namespace App\Controller\Dashboard;
 
 use App\Entity\Activity\Media;
 use App\Form\Activity\MediaType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/activity/media")
+ * @Route("/admin")
  */
 class MediaController extends AbstractController
 {
@@ -26,7 +26,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="media.new", methods={"GET","POST"})
+     * @Route("/media/new", name="media.new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="media.show", methods={"GET"})
+     * @Route("/media/{id}", name="media.show", methods={"GET"})
      */
     public function show(Media $media): Response
     {
@@ -59,7 +59,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="media.edit", methods={"GET","POST"})
+     * @Route("/media/{id}/edit", name="media.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Media $media): Response
     {
@@ -80,7 +80,7 @@ class MediaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="media.delete", methods={"DELETE"})
+     * @Route("/media/{id}", name="media.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Media $media): Response
     {

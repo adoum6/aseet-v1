@@ -27,7 +27,7 @@
                     <td>{{ event.eventDate | date("d/m/Y H:i:s")}}</td>
                     <td class="text-center">
                         <a href="{{path("event.show", {id: event.id})}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-warning"><i class="fas fa-edit"></a>
+                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                     </td>
                 </tr>
             {% endfor %}

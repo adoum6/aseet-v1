@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Activity;
+namespace App\Controller\Dashboard;
 
 use App\Entity\Activity\Category;
 use App\Form\Activity\CategoryType;
@@ -10,24 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/dashboard/category")
+ * @Route("/admin/category")
  */
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/index", name="category.other")
+     * @Route("/index", name="category.index")
      */
-    public function index(CategoryRepository $repository)
-    {
-        return $this->render('dashboard/category/index.html.twig', [
-            'categories' => $repository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/", name="category.index")
-     */
-    public function new(Request $request, CategoryRepository $repository)
+    public function index(Request $request, CategoryRepository $repository)
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -48,7 +38,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category.edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="category.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category)
     {

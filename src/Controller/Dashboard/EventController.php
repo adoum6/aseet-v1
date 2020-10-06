@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Activity;
+namespace App\Controller\Dashboard;
 
 use App\Entity\Activity\Event;
 use App\Form\Activity\EventType;
@@ -10,10 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+/**
+ * @Route("/admin/")
+ */
 class EventController extends AbstractController
 {
     /**
-     * @Route("/dashboard/event", name="event.index")
+     * @Route("event", name="event.index")
      */
     public function index(EventRepository $repository)
     {
@@ -23,7 +26,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("dashboard/event/new", name="event.new", methods={"GET", "POST"})
+     * @Route("event/new", name="event.new", methods={"GET", "POST"})
      */
     public function new(Request $request)
     {
@@ -46,7 +49,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("dashboard/event/{id}/edit", name="event.edit", methods="GET|POST")
+     * @Route("event/{id}/edit", name="event.edit", methods="GET|POST")
      */
     public function edit(Request $request, Event $event)
     {
@@ -67,7 +70,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("dashboard/event/{id}/show", name="event.edit", methods="GET")
+     * @Route("event/{id}/show", name="event.show", methods="GET")
      */
     public function show(Event $event)
     {
@@ -76,13 +79,4 @@ class EventController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/asset/activities", name="events.list", methods="GET")
-     */
-    public function getAllActivities(EventRepository $repository)
-    {
-        return $this->render('lien/vers/file.twig', [
-            'events'  =>  $repository->findByEventDateDesc(),
-        ]);
-    }
 }
