@@ -6,32 +6,34 @@
     <div class="alert alert-primary text-center m-0 p-0">
         <h3>Liste des activités</h3>
     </div>
-    <div class="col-md-10 mx-auto">
+    <div class="col-xs-12 col-md-10 mx-auto">
         <div class="text-right mt-4 mb-2">
             <a href="{{ path('event.new') }}" class="btn btn-primary"> + Ajouter </a>
         </div>
-        <table class="table">
-            <thead class="thead-primary">
-                <tr>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Catégorie</th>
-                    <th scope="col">Date</th>
-                    <th scope="col" class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for event in events %}
-                <tr>
-                    <td>{{ event.title}}</td>
-                    <td>{{ event.category.label}}</td>
-                    <td>{{ event.eventDate | date("d/m/Y H:i:s")}}</td>
-                    <td class="text-center">
-                        <a href="{{path("event.show", {id: event.id})}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                        <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="thead-primary">
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.title}}</td>
+                        <td>{{ event.category.label}}</td>
+                        <td>{{ event.eventDate | date("d/m/Y H:i:s")}}</td>
+                        <td class="text-center">
+                            <a href="{{path("event.show", {id: event.id})}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                            <a href="{{path("event.edit", {id: event.id})}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

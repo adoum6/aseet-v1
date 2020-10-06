@@ -25,24 +25,50 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
+                        <span>Tableau de Bord</span>
                     </a>
                 </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider">
                 <!-- Heading -->
-                <div class="sidebar-heading">Interface</div>
+                <div class="sidebar-heading">Activités</div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('event.new')}}">
-                        <i class="fas fa-fw fa-fish"></i>
+                    <a class="nav-link" href="{{path('event.index')}}">
+                        <i class="fas fa-fw fa-list-ul"></i>
                         <span>Activités</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('event.new')}}">
+                        <i class="fas fa-fw fa-edit"></i>
+                        <span>Nouvelle Activités</span>
+                    </a>
+                </li>
+    
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('category.index')}}">
-                        <i class="fas fa-fw fa-fish"></i>
+                        <i class="fas fa-fw fa-list"></i>
                         <span>Categories</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">Medias</div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('media.index')}}">
+                        <i class="fas fa-fw fa-list-ul"></i>
+                        <span>Liste de medias</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('media.new')}}">
+                        <i class="fas fa-fw fa-edit"></i>
+                        <span>Ajouter un media</span>
                     </a>
                 </li>
             </ul>
@@ -60,16 +86,9 @@
                         </button>
 
                         <!-- Topbar Search -->
-                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 text-primary">
+                           <marquee>Administration ASEET</marquee>
+                        </div>
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -98,7 +117,7 @@
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">MAHAMAT</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                     <i class="fas fa-user-astronaut"></i>
                                 </a>
                                 <!-- Dropdown - User Information -->
@@ -116,9 +135,9 @@
                     </nav>
 
                     <!-- Begin Page Content -->
-                    <div class="container-fluid">
+                    <div class="container-fluid bg-white">
                         <!-- Page Heading -->
-                        <div class="container bg-white">
+                        <div class="container">
                         {% block body %}
                         {% endblock %}
                         </div>
