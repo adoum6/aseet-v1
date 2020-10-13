@@ -1,0 +1,12 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Université | MAJ{% endblock %}
+
+{% block body %}
+    <div class="col-md-10 mx-auto">
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+            <button class="btn btn-primary">Sauvegarder</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

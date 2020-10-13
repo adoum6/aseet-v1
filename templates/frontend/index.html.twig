@@ -3,5 +3,8 @@
 {% block title %}Hello EventController!{% endblock %}
 
 {% block body %}
-
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <button type="button" class="btn btn-primary">Valider</button>
+    {{ form_end(form) }}
 {% endblock %}
